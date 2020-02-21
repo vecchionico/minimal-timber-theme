@@ -1,9 +1,15 @@
 {% extends "base.twig" %}
     {% block content %}
+    <div class="posts-container">
         {% for post in posts %}
             {% include 'tease.twig' %}
         {% endfor %}
+    </div>
         {% include 'pagination.twig' with {
         pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) 
     } %}
+    {% endblock %}
+    {% block footer%}
+        {{ parent() }}
+        {{ enqueue_style('article','article.css') }}
     {% endblock %}
